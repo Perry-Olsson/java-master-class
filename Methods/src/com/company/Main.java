@@ -18,6 +18,8 @@ public class Main {
     System.out.println(calculateScore(gameOver, score, levelCompleted, bonus));
 
     displayHighScorePosition("perry", calculateHighScorePosition(1001));
+
+    printConversion(1.5);
   }
 
   public static int calculateScore(boolean gameOver, int score, int levelCompleted, int bonus) {
@@ -40,5 +42,19 @@ public class Main {
     if (score > 100)
       return 3;
     return 4;
+  }
+
+  public static long toMilesPerHour(double kilometersPerHour) {
+    if (kilometersPerHour < 0)
+      return -1;
+    double kiloToMile = 0.62137119d;
+    return Math.round(kilometersPerHour * kiloToMile);
+  }
+
+  public static void printConversion(double kilometersPerHour) {
+    if (kilometersPerHour < 0)
+      System.out.println("Invalid Value");
+    else
+      System.out.println(kilometersPerHour + " km/h = " + toMilesPerHour(kilometersPerHour) + " mi/h");
   }
 }
