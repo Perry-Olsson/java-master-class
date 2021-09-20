@@ -1,6 +1,27 @@
 public class Main {
   public static void main(String[] args) {
-    System.out.println(calcFeetAndInchesToCentimeters(6, 0));
+    System.out.println(getDurationString(4000));
+  }
+
+  //Seconds and Minutes challenge
+  public static String getDurationString(int seconds) {
+    if (seconds < 0)
+      return "Invalid value";
+    int minutes = seconds / 60;
+    int remainingSeconds = seconds % 60;
+    return getDurationString(minutes, remainingSeconds);
+  }
+
+  public static String getDurationString(int minutes, int seconds) {
+    if (minutes < 0 || seconds < 0 || seconds > 59)
+      return "Invalid value";
+    int hours = minutes / 60;
+    int remainingMinutes = minutes % 60;
+    return getTimeStr(hours) + "h " + getTimeStr(remainingMinutes) + "m " + getTimeStr(seconds) + "s";
+  }
+
+  private static String getTimeStr(int timeVal) {
+    return timeVal < 10 ? "0" + timeVal : String.valueOf(timeVal);
   }
 
   public static double calcFeetAndInchesToCentimeters(double feet, double inches) {
